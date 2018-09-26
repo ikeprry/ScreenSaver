@@ -46,7 +46,7 @@ public class BallScreenSaver extends Application{
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         
     	Pane canvas = new Pane();
-    	Scene scene = new Scene(canvas, screenSize.getWidth(), screenSize.getHeight(), Color.ALICEBLUE);
+    	Scene scene = new Scene(canvas, screenSize.getWidth(), screenSize.getHeight());
     
         Bounds bounds = canvas.getBoundsInLocal();
       
@@ -60,7 +60,7 @@ public class BallScreenSaver extends Application{
         int circleamount = 300; 
         
            for (int i = 0; i < circleamount; i++) {
-            Circle ball = new Circle(40, Color.CADETBLUE);
+            Circle ball = new Circle(40);
            ball.setStrokeType(StrokeType.OUTSIDE);
             ball.setStroke(Color.web("white", 0.16));
            ball.setStrokeWidth(4);
@@ -87,9 +87,7 @@ public class BallScreenSaver extends Application{
                     new Stop(1, Color.web("#f2660f")),}));
         colors.widthProperty().bind(scene.widthProperty());
         colors.heightProperty().bind(scene.heightProperty());
-        Group blendModeGroup =
-                new Group(new Group(new Rectangle(scene.getWidth(), scene.getHeight(),
-                Color.BLACK), balls), colors);
+        Group blendModeGroup = new Group(new Group(new Rectangle(scene.getWidth(), scene.getHeight(),Color.BLACK), balls), colors);
         colors.setBlendMode(BlendMode.OVERLAY);
         canvas.getChildren().add(blendModeGroup);
         balls.setEffect(new BoxBlur(10, 10, 1));
